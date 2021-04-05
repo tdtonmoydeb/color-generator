@@ -1,0 +1,165 @@
+:root {
+  --color: #37f;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+body {
+  width: 100%;
+  min-height: 100vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  background: var(--color);
+  font-family: 'Poppins', sans-serif;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+}
+
+.bar {
+  width: 300px;
+  background: #fff;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  padding: 10px 20px;
+  border-radius: 10px;
+  -webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+          box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  -webkit-transform-origin: left;
+          transform-origin: left;
+  position: relative;
+}
+
+.bar.loadBar {
+  -webkit-animation: loadBar .5s;
+          animation: loadBar .5s;
+}
+
+.bar::before {
+  content: "";
+  position: absolute;
+  background: #121212;
+  border: 6px solid #121212;
+  padding: 0;
+  margin: 0;
+  bottom: -5px;
+  left: 50%;
+  -webkit-transform: translate(-50%, 100%) rotate(45deg);
+          transform: translate(-50%, 100%) rotate(45deg);
+  display: none;
+}
+
+.bar::after {
+  content: "copied";
+  position: absolute;
+  bottom: -10px;
+  right: 50%;
+  -webkit-transform: translate(50%, 100%);
+          transform: translate(50%, 100%);
+  font-size: 13px;
+  padding: 1px 10px;
+  background: #121212;
+  border-radius: 5px;
+  color: #fff;
+  display: none;
+}
+
+.bar.copied::before, .bar.copied::after {
+  display: inline-block;
+}
+
+.bar-color {
+  width: 20px;
+  cursor: pointer;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--color);
+  -webkit-transition: .5s;
+  transition: .5s;
+}
+
+.bar-colorCode {
+  font-size: 16px;
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: .3px;
+  color: #121212;
+}
+
+.bar-copyIcon {
+  height: auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  cursor: copy;
+}
+
+.bar-copyIcon .svg-icon {
+  width: 20px;
+}
+
+.bar-copyIcon .svg-icon:hover {
+  fill: var(--color);
+}
+
+@-webkit-keyframes loadBar {
+  0% {
+    -webkit-transform: rotateZ(0deg);
+            transform: rotateZ(0deg);
+  }
+  50% {
+    -webkit-transform: rotateZ(10deg);
+            transform: rotateZ(10deg);
+  }
+  100% {
+    -webkit-transform: rotateZ(0deg);
+            transform: rotateZ(0deg);
+  }
+}
+
+@keyframes loadBar {
+  0% {
+    -webkit-transform: rotateZ(0deg);
+            transform: rotateZ(0deg);
+  }
+  50% {
+    -webkit-transform: rotateZ(10deg);
+            transform: rotateZ(10deg);
+  }
+  100% {
+    -webkit-transform: rotateZ(0deg);
+            transform: rotateZ(0deg);
+  }
+}
+
+@media (max-width: 320px) {
+  .bar {
+    width: 80%;
+  }
+}
